@@ -103,7 +103,11 @@ so you can see -sometimes- some little difference between module's output and LC
 
 #include "decoder.h"
 
-static int wind_dir_degr[]= {0, 23, 45, 68, 90, 113, 135, 158, 180, 203, 225, 248, 270, 293, 315, 338};
+// Diep: replace
+// static int wind_dir_degr[]= {0, 23, 45, 68, 90, 113, 135, 158, 180, 203, 225, 248, 270, 293, 315, 338};
+
+// Diep: update to VNPT direction numberings
+static int wind_dir_degr[]= {  1,  2,  3,  4,  5,   6,   7,   8,   9,  10,  11,  12,  13,  14,  15,  16};
 
 // The transmission differences are 8 preamble bits (EPB) and 7 preamble bits (SPB)
 #define EPB 8
@@ -237,6 +241,8 @@ static int fineoffset_wh1080_callback(r_device *decoder, bitbuffer_t *bitbuffer)
                 _X("wind_dir_deg","direction_deg"),     "Wind Direction",    DATA_INT, direction_deg,
                 _X("wind_avg_km_h","speed"),   "Wind avg speed",   DATA_FORMAT,    "%.02f",    DATA_DOUBLE,    speed,
                 _X("wind_max_km_h","gust"),   "Wind gust",        DATA_FORMAT,    "%.02f",    DATA_DOUBLE,    gust,
+                _X("wind_avg_m_s","speed"),   "Wind avg speed",   DATA_FORMAT,    "%.02f",    DATA_DOUBLE,    speed/3.6f,
+                _X("wind_max_m_s","gust"),   "Wind gust",        DATA_FORMAT,    "%.02f",    DATA_DOUBLE,    gust/3.6f,            
                 _X("rain_mm","rain"),             "Total rainfall",   DATA_FORMAT,    "%3.1f",    DATA_DOUBLE,    rain,
                 "mic",              "Integrity",        DATA_STRING,    "CRC",
                 NULL);
