@@ -295,6 +295,8 @@ static char *output_fields[] = {
         "gust",  // TODO: remove this
         "wind_avg_km_h",
         "wind_max_km_h",
+        "wind_avg_m_s",
+        "wind_max_m_s",
         "rain", // TODO: remove this
         "rain_mm",
         "msg_type", // TODO: remove this
